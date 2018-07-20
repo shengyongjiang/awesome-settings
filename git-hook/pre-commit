@@ -1,0 +1,76 @@
+#!/bin/sh
+
+prograss_bar()
+{
+	BAR='>>>>>>>>>>'   # this is full bar, mine is 20 chars
+	for i in {1..10}; do
+		echo "${CYAN}${BAR:0:$i}\c" # print $i chars of $BAR from 0 position
+		sleep .05
+	done
+}
+
+# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+# Black        0;30     Dark Gray     1;30
+# Red          0;31     Light Red     1;31
+# Green        0;32     Light Green   1;32
+# Brown/Orange 0;33     Yellow        1;33
+# Blue         0;34     Light Blue    1;34
+# Purple       0;35     Light Purple  1;35
+# Cyan         0;36     Light Cyan    1;36
+# Light Gray   0;37     White         1;37
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+prograss_bar
+echo '\n'
+
+# array with QUOTES
+QUOTES_0=(
+"如果建筑工人盖房子的方式跟程序员写程序一样，那第一只飞来的啄木鸟就将毁掉人类文明	\n
+If builders built buildings the way programmers wrote programs, then the first woodpecker that came along wound destroy civilization. (Gerald Weinberg)" 
+"一个人静静坐在电脑面前写代码的感觉，那是什么感觉？那是武林高手闭关修炼的感觉" 
+"非优秀的程序员常常把空间和时间消耗殆尽，优秀的程序员则总是有足够的空间和时间去完成编程任务，而且配合近乎完美"
+"程序猿最烦两件事，第一件事是别人要他给自己的代码写文档，第二件呢？是别人的程序没有留下文档"
+"程序猿的读书历程：x 语言入门 —> x 语言应用实践 —> x 语言高阶编程 —> x 语言的科学与艺术 —> 编程之美 —> 编程之道 —> 编程之禅—> 颈椎病康复指南"
+"还没上大学的时候，高三暑假，跑到家那边的图书城想买传说中的C++的书，然后看到一本C#，我一看，嘿，这个++还写得挺艺术的，重叠起来了，于是把C#买了回来……"
+"检验代码质量的唯一标准 = 代码review时骂的次数 / 代码review时间"
+"原来《人月神话》不是本奇幻小说！ 原来《代码大全》不是一堆开源代码！ 原来《鸟哥的Linux私房菜》不是教你做菜！ 原来《边城》不是教你写代码的！ 原来《深入浅出HTML》不是教你How to Make Love"
+"我真的想让这个世界变得更好，但是他们不给我源代码……"
+"It’s not a bug – it’s an undocumented feature. (Anonymous)"
+"One man’s crappy software is another man’s full time job. (Jessica Gaston)"
+"Don’t worry if it doesn’t work right. If everything did, you’d be out of a job. (Mosher’s Law of Software Engineering)"
+"The trouble with programmers is that you can never tell what a programmer is doing until it’s too late. (Seymour Cray)"
+"The best performance improvement is the transition from the nonworking state to the working state. (J. Osterhout)"
+"In order to understand recursion, one must first understand recursion. (Anonymous)"
+"I think Microsoft named .Net so it wouldn’t show up in a Unix directory listing. (Oktal)"
+"Before software can be reusable it first has to be usable. (Ralph Johnson)"
+"Without requirements or design, programming is the art of adding bugs to an empty text file. (Louis Srygley)"
+)
+
+QUOTES_1=(
+"又一天过去了。今天过得怎么样，梦想是不是更远了？"
+"只要是石头，到哪里都不会发光的。"
+"我有位家境一般的朋友，一直觉得如果自己有钱一定会更幸福。后来他妈做婴幼教育发财了。快十年后我见他，问：现在你倒是有钱了，你真的幸福吗？他回答：爽翻啦！我默默地走开了。"
+"只有能力强会被当成纯技术人员；而光会社交拍马又会被认为没有真才实学；所以，要想在单位中脱颖而出，最重要的是有关系。"
+"我发现没有任何一个煤矿工人靠挖煤多又快当上了煤老板。"
+"我有个朋友，在几年前停止了抱怨和自怨自艾，开始努力改变自己。到今天，他的物质生活和精神状态都没有什么改善。"
+"很多时候，乐观的态度和好听的话帮不了你。"
+)
+
+QUOTES=("${QUOTES_0[@]}")
+
+# seed random generator
+RANDOM=$$$(date +%s)
+
+# pick a random entry from the QUOTES list
+QUOTE=${QUOTES[$RANDOM % ${#QUOTES[@]}]}
+echo "${GREEN}$QUOTE${NC}\n"
+
+prograss_bar
+echo "${NC}\n"
+
+
+
+
